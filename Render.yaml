@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: opiskelu-us-et
+    env: docker
+    plan: starter
+    healthCheckPath: /api/version
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /app/data
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: CREATOR_USER
+        value: Admin.Cxcjl
+      - key: CREATOR_PASS
+        sync: false
+      - key: BLACK_PASS
+        sync: false
+      - key: WHITE_PASS
+        sync: false
+    disk:
+      name: opiskelu-data
+      mountPath: /app/data
+      sizeGB: 1
